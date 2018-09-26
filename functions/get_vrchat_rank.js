@@ -8,7 +8,7 @@ exports.handler = function(event, context, callback) {
 
     const options = {
         host: 'api.vrchat.cloud',
-        path: `/api/1/users/${searchFor}${!isID ? '/name' : ''}`,
+        path: `/api/1/users/${encodeURIComponent(searchFor)}${!isID ? '/name' : ''}`,
         auth: VRCHAT_USER + ':' + VRCHAT_PASSWORD,
         headers: {
             'Cookie': 'apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26'
