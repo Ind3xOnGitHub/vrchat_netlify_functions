@@ -36,7 +36,7 @@ exports.handler = function(event, context, callback) {
             if (json.tags.indexOf('system_trust_veteran') >= 0) currentRank = 4
             if (json.tags.indexOf('system_trust_legend') >= 0) currentRank = 5
 
-            console.log(json.displayName, ranks[currentRank]);
+            console.log(`${searchFor} (${json.displayName})`, ranks[currentRank]);
 
             callback(null, {
                 statusCode: 200,
