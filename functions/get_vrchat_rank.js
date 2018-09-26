@@ -3,8 +3,6 @@ const https = require('https');
 const { VRCHAT_USER, VRCHAT_PASSWORD } = process.env;
 
 exports.handler = function(event, context, callback) {
-    console.log('foo')
-
     const searchFor = event.queryStringParameters.user.toLowerCase()
     const isID = searchFor.indexOf('usr_') === 0 ? true : false
 
