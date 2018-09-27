@@ -51,7 +51,7 @@ exports.handler = function(event, context, callback) {
                       <p>Rank of ${json.displayName}: <strong>${ranks[currentRank]}</strong></p>
                       <br>
                       <p>API response:</p>
-                      <code>${JSON.stringify(json)}</code>
+                      <pre><code>${JSON.stringify(json, null, 4)}</code></pre><br>
                       <br>
                       <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
                     </body>
