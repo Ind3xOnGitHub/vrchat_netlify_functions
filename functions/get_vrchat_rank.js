@@ -44,14 +44,19 @@ exports.handler = function(event, context, callback) {
                   <html>
                     <head>
                       <meta charset="UTF-8">
-                      <title>VRChat rank</title>
+                      <title>Get your VRChat rank</title>
                     </head>
 
                     <body>
                       <p>Rank of ${json.displayName}: <strong>${ranks[currentRank]}</strong></p>
+                      <form method="GET" action="">
+                        <label for="user_input">Enter your user name or user ID:</label>
+                        <input id="user_input" type="text" name="user" value="${event.queryStringParameters.user}">
+                        <button>Submit</button>
+                      </form>
                       <br>
                       <p>API response:</p>
-                      <pre><code>${JSON.stringify(json, null, 4)}</code></pre><br>
+                      <pre><code>${JSON.stringify(json, null, 4)}</code></pre>
                       <br>
                       <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
                     </body>
