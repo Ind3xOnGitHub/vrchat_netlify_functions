@@ -40,7 +40,23 @@ exports.handler = function(event, context, callback) {
 
             callback(null, {
                 statusCode: 200,
-                body: `<html><head><title>VRChat rank</title></head><body>Rank of ${json.displayName}: <strong>${ranks[currentRank]}</strong><br><br>API response: <br><pre><code>${JSON.stringify(json)}</code></pre></body></html>`
+                body: `
+                  <html>
+                    <head>
+                      <meta charset="UTF-8">
+                      <title>VRChat rank</title>
+                    </head>
+
+                    <body>
+                      <p>Rank of ${json.displayName}: <strong>${ranks[currentRank]}</strong></p>
+                      <br>
+                      <p>API response:</p>
+                      <code>${JSON.stringify(json)}</code>
+                      <br>
+                      <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
+                    </body>
+                  </html>
+                `
             })
         });
     });
