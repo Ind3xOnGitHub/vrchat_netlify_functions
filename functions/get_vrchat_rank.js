@@ -47,6 +47,8 @@ exports.handler = function(event, context, callback) {
     res.on('data', chunk => {
       const json = JSON.parse(chunk);
 
+      if (!json.tags) console.log(json);
+
       const ranks = {
         0: 'Visitor',
         1: 'New User',
