@@ -30,9 +30,10 @@ exports.handler = function(event, context, callback) {
             }
 
             let currentRank = 0;
-            if (json.tags.indexOf('system_trust_basic') >= 0) currentRank = 1
-            if (json.tags.indexOf('system_trust_intermediate') >= 0) currentRank = 2
-            if (json.tags.indexOf('system_trust_known') >= 0) currentRank = 3
+            if (json.tags.indexOf('system_trust_basic') >= 0) currentRank = 0
+            if (json.tags.indexOf('system_trust_intermediate') >= 0) currentRank = 1
+            if (json.tags.indexOf('system_trust_known') >= 0) currentRank = 2
+            if (json.tags.indexOf('system_trust_trusted') >= 0) currentRank = 3
             if (json.tags.indexOf('system_trust_veteran') >= 0) currentRank = 4
             if (json.tags.indexOf('system_trust_legend') >= 0) currentRank = 5
 
