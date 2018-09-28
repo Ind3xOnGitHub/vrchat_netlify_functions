@@ -48,7 +48,7 @@ exports.handler = function(event, context, callback) {
             <title>Your VRChat rank</title>
 
             <meta property="og:title" content="VRChat rank of ${json.displayName}">
-            <meta property="og:description" content="${ranks[currentRank]}">
+            <meta property="og:description" content="${ranks[currentRank]}\n\nKeep in mind that the Trust and Safety system is still in development and therefore the ranks can change any time and may be not fully reasonable.">
           </head>
 
           <body>
