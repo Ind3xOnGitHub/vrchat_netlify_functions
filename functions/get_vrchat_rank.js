@@ -47,9 +47,7 @@ exports.handler = function(event, context, callback) {
     res.on('data', chunk => {
       const json = JSON.parse(chunk)
 
-      if (!json.tags) console.log(json)
-
-      if (json.error.status_code === 404) {
+      if (json.error && json.error.status_code === 404) {
         callback(null, {
           statusCode: 200,
           body: `
@@ -75,6 +73,9 @@ exports.handler = function(event, context, callback) {
           `
         })
 
+        return
+      } else if (json.error) {
+        console.error(json.error)
         return
       }
 
