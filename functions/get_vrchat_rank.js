@@ -64,7 +64,7 @@ exports.handler = function(event, context, callback) {
             <p>API response:</p>
             <pre><code>${JSON.stringify(json, null, 4)}</code></pre>
             <br>
-            <p>Current mapping</p>
+            <p>Current mapping (unofficial):</p>
             <code>
               system_trust_legend = Veteran User (will be shown as Trusted User ingame)<br>
               system_trust_veteran = Trusted User<br>
