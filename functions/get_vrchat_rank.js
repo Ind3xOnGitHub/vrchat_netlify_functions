@@ -66,12 +66,14 @@ exports.handler = function(event, context, callback) {
             <br>
             <p>Current mapping</p>
             <code>
-              system_trust_legend = Veteran User (will be shown as Trusted User ingame)
-              system_trust_veteran = Trusted User
-              system_trust_trusted = Known User
-              system_trust_known = User
-              system_trust_intermediate = New User
+              system_trust_legend = Veteran User (will be shown as Trusted User ingame)<br>
+              system_trust_veteran = Trusted User<br>
+              system_trust_trusted = Known User<br>
+              system_trust_known = User<br>
+              system_trust_intermediate = New User<br>
               system_trust_basic = Visitor
+            </code><br>
+            <br>
             <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
           </body>
         </html>
