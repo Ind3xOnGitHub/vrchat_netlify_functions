@@ -3,27 +3,26 @@ const https = require('https');
 const { VRCHAT_USER, VRCHAT_PASSWORD } = process.env;
 
 exports.handler = function(event, context, callback) {
-  const searchFor = event.queryStringParameters.user.toLowerCase()
-  if (!searchFor) {
+  if (!event.queryStringParameters.user) {
     callback(null, {
       statusCode: 200,
       body: `
       <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>Your VRChat rank</title>
-        </head>
+      <head>
+      <meta charset="UTF-8">
+      <title>Your VRChat rank</title>
+      </head>
 
-        <body>
-          <form method="GET" action="">
-            <label for="user_input">Enter your user name or user ID:</label>
-            <input id="user_input" type="text" name="user" value="${event.queryStringParameters.user}">
-            <button>Submit</button>
-          </form>
-          <br>
-          <br>
-          <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
-        </body>
+      <body>
+      <form method="GET" action="">
+      <label for="user_input">Enter your user name or user ID:</label>
+      <input id="user_input" type="text" name="user" value="${event.queryStringParameters.user}">
+      <button>Submit</button>
+      </form>
+      <br>
+      <br>
+      <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
+      </body>
       </html>
       `
     })
@@ -31,6 +30,7 @@ exports.handler = function(event, context, callback) {
     return;
   }
 
+  const searchFor = event.queryStringParameters.user.toLowerCase()
   const isID = searchFor.indexOf('usr_') === 0 ? true : false
 
   const options = {
