@@ -54,6 +54,7 @@ exports.handler = function(event, context, callback) {
                     <body>
                       <p>Rank of ${json.displayName}: <strong>${ranks[currentRank]}</strong></p>
                       <p><small>Keep in mind that the Trust and Safety system is still in development and therefore the ranks can change any time and may be not fully reasonable.</small></p>
+                      <br>
                       <form method="GET" action="">
                         <label for="user_input">Enter your user name or user ID:</label>
                         <input id="user_input" type="text" name="user" value="${event.queryStringParameters.user}">
