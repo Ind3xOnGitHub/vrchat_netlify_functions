@@ -46,8 +46,8 @@ exports.handler = function(event, context, callback) {
                       <meta charset="UTF-8">
                       <title>Your VRChat rank</title>
 
-                      <meta property="og:title" content="${ranks[currentRank]}">
-                      <meta property="og:description" content="VRChat rank of ${json.displayName}">
+                      <meta property="og:title" content="VRChat rank of ${json.displayName}">
+                      <meta property="og:description" content="${ranks[currentRank]}">
                     </head>
 
                     <body>
