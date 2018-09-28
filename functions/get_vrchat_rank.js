@@ -35,10 +35,9 @@ exports.handler = function(event, context, callback) {
   
   if (searchFor === 'june') {
     callback(null, {
-        statusCode: 403,
-        body: 'Please stop, June.'
-      }
-    )
+      statusCode: 403,
+      body: 'Please stop, June.'
+    })
     console.log('june blocked')
     return
   }
