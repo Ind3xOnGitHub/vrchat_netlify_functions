@@ -1,6 +1,6 @@
-const https = require('https');
+const https = require('https')
 
-const { VRCHAT_USER, VRCHAT_PASSWORD } = process.env;
+const { VRCHAT_USER, VRCHAT_PASSWORD } = process.env
 
 exports.handler = function(event, context, callback) {
   if (!event.queryStringParameters.user) {
@@ -8,26 +8,26 @@ exports.handler = function(event, context, callback) {
       statusCode: 200,
       body: `
       <html>
-      <head>
-      <meta charset="UTF-8">
-      <title>Your VRChat rank</title>
-      </head>
+        <head>
+          <meta charset="UTF-8">
+          <title>Your VRChat rank</title>
+        </head>
 
-      <body>
-      <form method="GET" action="">
-      <label for="user_input">Enter your user name or user ID:</label>
-      <input id="user_input" type="text" name="user" value="${event.queryStringParameters.user}">
-      <button>Submit</button>
-      </form>
-      <br>
-      <br>
-      <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
-      </body>
+        <body>
+          <form method="GET" action="">
+            <label for="user_input">Enter your user name or user ID:</label>
+            <input id="user_input" type="text" name="user">
+            <button>Submit</button>
+          </form>
+          <br>
+          <br>
+          <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
+        </body>
       </html>
       `
     })
 
-    return;
+    return
   }
 
   const searchFor = event.queryStringParameters.user.toLowerCase()
@@ -43,11 +43,40 @@ exports.handler = function(event, context, callback) {
   }
 
   const req = https.request(options, function(res) {
-    res.setEncoding('utf8');
+    res.setEncoding('utf8')
     res.on('data', chunk => {
-      const json = JSON.parse(chunk);
+      const json = JSON.parse(chunk)
 
-      if (!json.tags) console.log(json);
+      if (!json.tags) console.log(json)
+
+      if (json.error.status_code === 404) {
+        callback(null, {
+          statusCode: 200,
+          body: `
+          <html>
+            <head>
+              <meta charset="UTF-8">
+              <title>Your VRChat rank</title>
+            </head>
+
+            <body>
+              <p>User ${searchFor} not found. Try entering your user id if your name has some unusual characters in it.</p>
+
+              <form method="GET" action="">
+                <label for="user_input">Enter your user name or user ID:</label>
+                <input id="user_input" type="text" name="user">
+                <button>Submit</button>
+              </form>
+              <br>
+              <br>
+              <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
+            </body>
+          </html>
+          `
+        })
+
+        return
+      }
 
       const ranks = {
         0: 'Visitor',
@@ -58,7 +87,7 @@ exports.handler = function(event, context, callback) {
         5: 'Veteran User'
       }
 
-      let currentRank = 0;
+      let currentRank = 0
       if (json.tags.indexOf('system_trust_basic') >= 0) currentRank = 0
       if (json.tags.indexOf('system_trust_intermediate') >= 0) currentRank = 1
       if (json.tags.indexOf('system_trust_known') >= 0) currentRank = 2
@@ -66,7 +95,7 @@ exports.handler = function(event, context, callback) {
       if (json.tags.indexOf('system_trust_veteran') >= 0) currentRank = 4
       if (json.tags.indexOf('system_trust_legend') >= 0) currentRank = 5
 
-      console.log(`${searchFor} (${json.displayName})`, ranks[currentRank]);
+      console.log(`${searchFor} (${json.displayName})`, ranks[currentRank])
 
       callback(null, {
         statusCode: 200,
@@ -109,12 +138,12 @@ exports.handler = function(event, context, callback) {
         </html>
         `
       })
-    });
-  });
+    })
+  })
 
   req.on('error', function(e) {
     console.error(e)
-  });
+  })
 
   req.end()
 }
