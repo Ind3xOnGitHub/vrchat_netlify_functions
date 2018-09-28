@@ -74,6 +74,7 @@ exports.handler = function(event, context, callback) {
               system_trust_basic = Visitor
             </code><br>
             <br>
+            <br>
             <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/get_vrchat_rank.js" target="_blank" rel="noopener">Source code</a>
           </body>
         </html>
