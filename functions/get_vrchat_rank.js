@@ -32,6 +32,15 @@ exports.handler = function(event, context, callback) {
 
   const searchFor = event.queryStringParameters.user.toLowerCase()
   const isID = searchFor.indexOf('usr_') === 0 ? true : false
+  
+  if (searchFor === 'june') {
+    callback(null, {
+      statusCode: 403,
+      body: 'Please stop, June.'
+    }
+    console.log('june blocked')
+    return
+  }
 
   const options = {
     host: 'api.vrchat.cloud',
