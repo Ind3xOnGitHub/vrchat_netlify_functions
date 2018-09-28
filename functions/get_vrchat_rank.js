@@ -24,9 +24,9 @@ exports.handler = function(event, context, callback) {
                 0: 'Visitor',
                 1: 'New User',
                 2: 'User',
-                3: 'Known',
-                4: 'Trusted',
-                5: 'Veteran'
+                3: 'Known User',
+                4: 'Trusted User',
+                5: 'Veteran User'
             }
 
             let currentRank = 0;
