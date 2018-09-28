@@ -3,6 +3,8 @@ const https = require('https')
 const { VRCHAT_USER, VRCHAT_PASSWORD } = process.env
 
 exports.handler = function(event, context, callback) {
+  console.log(event);
+  
   if (!event.queryStringParameters.user) {
     callback(null, {
       statusCode: 200,
