@@ -3,7 +3,7 @@ const https = require('https')
 const { VRCHAT_USER, VRCHAT_PASSWORD } = process.env
 
 exports.handler = function(event, context, callback) {
-  console.log(event);
+  console.log(event.headers['client-ip']);
   
   if (!event.queryStringParameters.user) {
     callback(null, {
@@ -35,14 +35,14 @@ exports.handler = function(event, context, callback) {
   const searchFor = event.queryStringParameters.user.toLowerCase()
   const isID = searchFor.indexOf('usr_') === 0 ? true : false
   
-  if (searchFor === 'june') {
+  /* if (searchFor === 'june') {
     callback(null, {
       statusCode: 403,
       body: 'Please stop, June.'
     })
     console.log('june blocked')
     return
-  }
+  } */
 
   const options = {
     host: 'api.vrchat.cloud',
