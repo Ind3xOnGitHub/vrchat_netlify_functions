@@ -13,10 +13,10 @@ exports.handler = function(event, context, callback) {
       <body>
         <h1>Mass invite</h1>
         <p>Invite all your friends with a custom message.</p>
-        <p><small>Disclaimer: The API neeeds your VRChat credentials to be able to see your friends. This site therefore asks for them. None of your input will be send to my servers since this site completely runs in your browser locally. The credentials are only getting used to directly communicate with the VRChat API. You can check the source code of this site yourself or ask any of your developer friends if it can be trusted or not.</small></p>
+        <p><small>Disclaimer: The VRChat API needs your credentials to be able to see your friends. This site therefore asks for them. None of your input will be send to my servers since this site completely runslocally in your browser. The credentials are only getting used to directly communicate with the VRChat API. You can check the source code of this site yourself or ask any of your developer friends if it can be trusted or not.</small></p>
         <br>
         <p>1. To be able to use this API you have to friend yourself. Enter your VRChat credentials and click on "Friend yourself". Then accept the friend request ingame.</p>
-        <form method="GET" action="#" onsubmit="formSubmitted(e)">
+        <form method="GET" action="#" onsubmit="formSubmitted(event)">
           <label for="username_email">Enter your user name or e-mail address:</label>
           <input id="username_email" type="text" name="username">
           <br>
@@ -27,10 +27,10 @@ exports.handler = function(event, context, callback) {
         </form>
         <br>
         <p>2. Show online friends</p>
-        <button onclick="showOnlineFriends(e)">Show online friends</button>
+        <button onclick="showOnlineFriends(event)">Show online friends</button>
         <br>
         <p>3. Enter your custom message, select the friends you want to invite and then click on "invite"</p>
-        <form method="GET" action="#" onsubmit="invite(e)">
+        <form method="GET" action="#" onsubmit="invite(event)">
           <input type="text" name="message" placeholder="Custom message">
           <div></div>
           <button>Invite</button>
@@ -38,7 +38,7 @@ exports.handler = function(event, context, callback) {
         <br>
         <p>Log:</p>
         <textarea cols="90" rows="15" readonly></textarea>
-        <p><small>It will only send once invite per second.</small></p>
+        <p><small>It will only send one invite per second.</small></p>
         <br>
         <br>
         <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/mass_invite.js" target="_blank" rel="noopener">Source code</a>
