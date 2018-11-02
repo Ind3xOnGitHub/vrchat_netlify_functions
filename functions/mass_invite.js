@@ -17,23 +17,24 @@ exports.handler = function(event, context, callback) {
         <br>
         <p>1. To be able to use this API you have to friend yourself. Enter your VRChat credentials and click on "friend yourself". Then accept the friend request ingame.</p>
         <form method="GET" action="#" onsubmit="formSubmitted()">
-          <label for="username_email">Enter your user name or e-mail address</label>
+          <label for="username_email">Enter your user name or e-mail address:</label>
           <input id="username_email" type="text" name="username">
-          <label for="password">Enter your password</label>
+          <br>
+          <label for="password">Enter your password:</label>
           <input id="password" type="text" name="password">
           <button>Friend yourself</button>
         </form>
         <br>
         <p>2. Show online friends</p>
-        <button onclick="showOnlineFriends()"></button>
+        <button onclick="showOnlineFriends()">Show online friends</button>
         <br>
         <p>3. Enter your custom message and select the friends you want to invite</p>
         <form method="GET" action="#" onsubmit="invite()">
-        <button>Invite</button>
+          <button>Invite</button>
         </form>
         <br>
         <p>Log:</p>
-        <textarea cols="30" rows="10" readonly></textarea>
+        <textarea cols="90" rows="15" readonly></textarea>
         <br>
         <br>
         <a href="https://github.com/Ind3xOnGitHub/vrchat_netlify_functions/blob/master/functions/mass_invite.js" target="_blank" rel="noopener">Source code</a>
